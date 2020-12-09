@@ -1,0 +1,30 @@
+"""2. Implement a Python program to generate all sentences where subject is in
+["Americans", "Indians"] and verb is in ["Play", "watch"] and the object is in
+["Baseball","cricket"].
+Hint: Subject,Verb and Object should be declared in the program as shown below.
+subjects=["Americans ","Indians"]
+verbs=["play","watch"]
+objects=["Baseball","Cricket"]
+Output should come as below:
+Americans play Baseball.
+Americans play Cricket.
+Americans watch Baseball.
+Americans watch Cricket.
+Indians play Baseball.
+Indians play Cricket.
+Indians watch Baseball.
+Indians watch Cricket.
+"""
+
+
+def s_v_o(subjects, verbs, objects):
+    li = [[[i + ' ' + j + ' ' + k for k in objects] for j in verbs] for i in subjects]
+    flatlist = [i for k in li for j in k for i in j]
+    for i in flatlist:
+        print(i)
+
+
+subjects = ["Americans", "Indians"]
+verbs = ["play", "watch"]
+objects = ["Baseball", "Cricket"]
+s_v_o(subjects, verbs, objects)
