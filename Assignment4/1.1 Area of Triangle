@@ -1,0 +1,22 @@
+""" 1.1 Write a Python Program(with class concepts) to find the area of the triangle using the below
+formula.
+area = (s*(s-a)*(s-b)*(s-c)) ** 0.5
+Function to take the length of the sides of triangle from user should be defined in the parent
+class and function to calculate the area should be defined in subclass. """
+
+
+class area:
+    def __init__(self, s, a, b, c):
+        self.s = s
+        self.a = a
+        self.b = b
+        self.c = c
+
+
+class s_area(area):
+    def area_of_triange(self):
+        return (self.s * (self.s - self.a) * (self.s - self.b) * (self.s - self.c)) ** 0.5
+
+
+area_triangle = s_area(1, 2, 2, 3)
+print(area_triangle.area_of_triange())
