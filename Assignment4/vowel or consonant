@@ -1,0 +1,17 @@
+# 2.2 Write a Python function which takes a character (i.e. a string of length 1) and returns True if
+# it is a vowel, False otherwise.
+
+def vowel_or_consonant(s):
+    if s in ['a', 'e', 'i', 'o', 'u']:
+        return True
+    else:
+        return False
+
+
+s = input()
+if len(s) > 1:
+    print("Length of Input should be only one character long")
+else:
+    print(vowel_or_consonant(s))
+
+
