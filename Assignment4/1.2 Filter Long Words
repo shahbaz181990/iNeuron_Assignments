@@ -1,0 +1,14 @@
+# 1.2 Write a function filter_long_words() that takes a list of words and an integer n and returns
+# the list of words that are longer than n.
+
+def filter_long_words(li, n):
+    li_new = []
+    for i in li:
+        if len(i) > n:
+            li_new.append(i)
+    return li_new
+
+
+li = list(input().split(','))
+n = int(input())
+print(filter_long_words(li, n))
