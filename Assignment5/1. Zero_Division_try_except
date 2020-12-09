@@ -1,0 +1,11 @@
+# 1. Write a function to compute 5/0 and use try/except to catch the exceptions.
+
+def div_by_zero(num):
+    try:
+        return num / 0
+    except ZeroDivisionError:
+        print("ZeroDivisionError")
+
+
+num = int(input())
+div_by_zero(num)
