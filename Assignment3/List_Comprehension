@@ -1,0 +1,11 @@
+
+s1 = 'xyz'
+# ANS1
+l1 = [i * x for i in s1 for x in range(1, 5)]
+print(l1)
+# ANS2
+l2 = [x * i for x in range(1, 5) for i in s1]
+print(l2)
+# ANS4
+t1 = tuple((j,i) for i in range(1, 4) for j in range(1, 4))
+print(t1)
