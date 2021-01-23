@@ -1,0 +1,45 @@
+import pandas as pd
+import numpy as np
+# Load data to dataframe
+df = pd.DataFrame({'From_To': ['LoNDon_paris', 'MAdrid_miLAN',
+'londON_StockhOlm',
+'Budapest_PaRis', 'Brussels_londOn'],
+'FlightNumber': [10045, np.nan, 10065, np.nan, 10085],
+'RecentDelays': [[23, 47], [], [24, 43, 87], [13], [67, 32]],
+'Airline': ['KLM(!)', '<Air France> (12)', '(British Airways. )',
+'12. Air France', '"Swiss Air"']})
+print("===========Before Pre-Processing=================\n")
+print(df)
+
+s1 = df['FlightNumber']
+s1 = s1.fillna(0).astype(int)
+
+for i in range(len(s1)-1):
+    if s1[i+1] == 0:
+        s1[i+1] = s1[i] + 10
+
+
+df['FlightNumber'] = s1
+s2 = df['From_To'].str.split("_", expand=True).rename(columns = {0:"From", 1:"To"})
+s2['From'] = s2['From'].str.lower()
+s2['From'] = s2['From'].str.capitalize()
+s2['To'] = s2['To'].str.lower()
+s2['To'] = s2['To'].str.capitalize()
+
+
+df = df.drop(['From_To'], axis=1)
+df['From'] = s2['From']
+df['To'] = s2['To']
+df = df[['From', 'To', 'FlightNumber', 'RecentDelays', 'Airline']]
+#s3 = df['RecentDelays'].astype(str).str.split(",", expand=True)
+delays = pd.DataFrame(df['RecentDelays'].to_list(), columns=['delay_1', 'delay_2', 'delay_3'])
+
+
+df = df.drop(['RecentDelays'], axis = 1)
+df['delay_1'] = delays['delay_1']
+df['delay_2'] = delays['delay_2']
+df['delay_3'] = delays['delay_3']
+df = df[['From', 'To', 'FlightNumber', 'delay_1', 'delay_2', 'delay_3', 'Airline']]
+print("============ After Pre-Processing ================ \n")
+print(df)
+
