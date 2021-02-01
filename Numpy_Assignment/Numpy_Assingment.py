@@ -1,6 +1,3 @@
-import numpy as np
-
-
 def numpy_assignment(x, n):
     # Counter Variable
     temp = 0
